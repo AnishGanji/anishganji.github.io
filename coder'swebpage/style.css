@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #041C32;
+    margin: 20px;
+}
+
+#content {
+    color: #84DFFF;
+    border-color: black;  
+}
+
+h1 {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 900px;
+}
+
+#coder {
+    opacity: 0.5;
+}
+
+#coder:hover {
+    opacity: 1;
+}
+
+#image {
+    opacity: 1;
+}
+
+#heading {
+    color: red;
+    text-align: center;
+}
+
+#submit {
+    background-color: orange;
+    border-radius: 20px;
+    border: none;
+    padding: 5px;
+    font-size: medium;
+    padding: 0.5rem;
+}
+
+.box {
+    display: flex;
+}
+
+#button {
+    border-radius: 10px;
+    background-color: rgb(255, 217, 0);
+    border: none; 
+}
+
+#button2 {
+    border-radius: 10px;
+    background-color: rgb(255, 217, 0);
+    border: none; 
+}
+
+.box2 {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.box3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.box5 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#back {
+    border-radius: 10px;
+    background-color: rgb(255, 217, 0);
+    border: none; 
+}
+
+.content {
+    color: #84DFFF;
+}
+
+button {
+    border-radius: 10px;
+    background-color: rgb(255, 217, 0);
+    border: none; 
+}
+
+.div {
+    width: 40%;
+    margin:auto;
+    overflow: hidden;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 7%;
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#read {
+    border-radius: 10px;
+    background-color: rgb(255, 217, 0);
+    border: none; 
+}
+
+.box4 {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+a {
+    width: 10%;
+    overflow: hidden;
+    padding: 0.5rem;
+    background-color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 7%;
+    text-decoration: none;
+    color: rgba(127, 251, 255, 0.904);
+}
+
+.container2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+input {
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+#link {
+    width: 10%;
+    overflow: hidden;
+    padding: 0.45rem;
+    background-color: rgb(226, 41, 41);
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 7%;
+    text-decoration: none;
+    color: rgba(127, 251, 255, 0.904);
+}

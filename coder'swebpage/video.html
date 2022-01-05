@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Coder's Videos</title>
+</head>
+<body>
+    <h1 id="content">This is my Videos</h1>
+
+    <p id="content">Please subscribe down below</p>
+
+<div class="container">
+    <div class="box">
+
+        <button id="button" onclick="document.getElementById('image').src='/Subscribed.jpeg'">Subscribe</button>
+    </div>
+
+    <div class="box2">
+
+        <button id="button2" onclick="document.getElementById('image').src='/subscribe.png'">Unsubscribe</button>
+    </div>
+
+    <div class="box3">
+        <img height="100" width="100" onclick="ClickImage()" id="image" src="/subscribe.png" alt="">
+    </div>
+
+    <form action="/index.html">
+        <button id="back">Back</button>
+    </form>
+
+    <div class="box4">
+        <form action="/read.html">
+            <button id="read" >Read About Me</button>
+        </form>
+    </div>
+
+    <div class="box5">
+        <iframe src="/videofolder/Subscibe Intro.mp4"><iframe>
+    </div>
+
+</div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
