@@ -44,21 +44,39 @@ h1 {
 }
 
 #button {
-    border-radius: 10px;
-    background-color: rgb(255, 217, 0);
-    border: none; 
+    width: 10%;
+    overflow: hidden;
+    padding: 0.5rem;
+    background-color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 7%;
+    text-decoration: none;
+    color: rgba(127, 251, 255, 0.904);
 }
 
 #button2 {
-    border-radius: 10px;
-    background-color: rgb(255, 217, 0);
-    border: none; 
+    width: 10%;
+    overflow: hidden;
+    padding: 0.5rem;
+    background-color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 7%;
+    text-decoration: none;
+    color: rgba(127, 251, 255, 0.904);
 }
 
 #back {
-    border-radius: 10px;
-    background-color: rgb(255, 217, 0);
-    border: none; 
+    width: 10%;
+    overflow: hidden;
+    padding: 0.5rem;
+    background-color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 7%;
+    text-decoration: none;
+    color: rgba(127, 251, 255, 0.904);
 }
 
 .content {
@@ -66,9 +84,15 @@ h1 {
 }
 
 button {
-    border-radius: 10px;
-    background-color: rgb(255, 217, 0);
-    border: none; 
+    width: 10%;
+    overflow: hidden;
+    padding: 0.5rem;
+    background-color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 7%;
+    text-decoration: none;
+    color: rgba(127, 251, 255, 0.904);
 }
 
 .container {
@@ -91,9 +115,15 @@ button {
 }
 
 #read {
-    border-radius: 10px;
-    background-color: rgb(255, 217, 0);
-    border: none; 
+    width: 10%;
+    overflow: hidden;
+    padding: 0.5rem;
+    background-color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 7%;
+    text-decoration: none;
+    color: rgba(127, 251, 255, 0.904);
 }
 
 a {
