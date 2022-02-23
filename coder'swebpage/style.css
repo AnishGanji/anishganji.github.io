@@ -92,7 +92,7 @@ button {
     border: none; 
 }
 
-.div {
+.container {
     width: 40%;
     margin:auto;
     overflow: hidden;
