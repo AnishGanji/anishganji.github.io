@@ -53,6 +53,7 @@ h1 {
     margin-top: 7%;
     text-decoration: none;
     color: rgba(127, 251, 255, 0.904);
+    border: none;
 }
 
 #button2 {
@@ -65,6 +66,7 @@ h1 {
     margin-top: 7%;
     text-decoration: none;
     color: rgba(127, 251, 255, 0.904);
+    border: none;
 }
 
 #back {
@@ -77,6 +79,7 @@ h1 {
     margin-top: 7%;
     text-decoration: none;
     color: rgba(127, 251, 255, 0.904);
+    border: none;
 }
 
 .content {
@@ -112,6 +115,7 @@ h1 {
     margin-top: 7%;
     text-decoration: none;
     color: rgba(127, 251, 255, 0.904);
+    border: none;
 }
 
 a {
