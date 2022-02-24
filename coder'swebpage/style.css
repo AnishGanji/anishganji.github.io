@@ -137,10 +137,18 @@ a {
 }
 
 input {
-    border: 2px solid black;
-    border-radius: 10px;
-    padding: 0.5rem;
-    width: 70%;
+    outline: none;
+    display: block;
+    background: #1a4657;
+    width: 100%;
+    border: 0;
+    border-radius: 25px;
+    padding: 12px 20px;
+    color: #03d476;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: 600;
+    transition: 0.3s ease;    
 }
 
 #link {
