@@ -163,6 +163,6 @@ input {
     color: rgba(127, 251, 255, 0.904);
 }
 
-.mark {
+#highlight {
     color: red;
 }
