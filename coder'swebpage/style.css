@@ -166,3 +166,15 @@ input {
 #highlight {
     color: red;
 }
+
+.btn {
+    width: 10%;
+    overflow: hidden;
+    padding: 0.5rem;
+    background-color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 7%;
+    text-decoration: none;
+    color: rgba(127, 251, 255, 0.904);
+}
