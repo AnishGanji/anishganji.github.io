@@ -180,3 +180,9 @@ input {
     color: rgba(127, 251, 255, 0.904);
     cursor: pointer;
 }
+
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+}
