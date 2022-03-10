@@ -81,6 +81,7 @@ h1 {
     text-decoration: none;
     color: rgba(127, 251, 255, 0.904);
     border: none;
+    cursor: pointer;
 }
 
 .content {
@@ -177,4 +178,5 @@ input {
     margin-top: 7%;
     text-decoration: none;
     color: rgba(127, 251, 255, 0.904);
+    cursor: pointer;
 }
