@@ -10,8 +10,6 @@ let online = () => {
     status2.innerHTML = 'Touch my Image'
     status.style.backgroundColor = 'none'
     status2.style.backgroundColor = 'none'
-    status3.innerHTML = 'Read Me'
-    status3.style.backgroundColor = 'none'
 }
 
 let offline = () => {
@@ -22,9 +20,6 @@ let offline = () => {
    status2.style.backgroundColor = '#e02401'
 
    document.getElementById('hide').style.display = "none"
-    
-   status3.innerHTML = 'Read Me'
-   status3.style.backgroundColor = '#e02401'
 };
 
 if (window.navigator.onLine) {
