@@ -186,3 +186,7 @@ input {
     flex-direction: row;
     justify-content:center;
 }
+
+ul {
+    list-style: none;
+}
