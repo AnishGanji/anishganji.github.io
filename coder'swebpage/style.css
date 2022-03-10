@@ -181,7 +181,7 @@ input {
     cursor: pointer;
 }
 
-.row{
+nav .row{
     display: flex;
     flex-direction: row;
     justify-content:center;
