@@ -1,0 +1,46 @@
+body {
+    background-color: #333;
+    color: #fff;
+}
+
+.navbar {
+    border-bottom: #008ed6 2px solid;
+    opacity: 0.8;
+}
+
+#home-section {
+    background: url(https://cdn.pixabay.com/photo/2017/03/28/12/11/chairs-2181960_1280.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 700px;
+}
+
+#home-section .dark-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 700px;
+    background: rgba(0, 0, 0,0.7);
+}
+
+#home-section .home-inner {
+    padding-top: 150px;
+}
+
+strong {
+    color: #008ed6;
+}
+
+.fa-check {
+    color: seagreen;
+}
+
+#home-section .card-form {
+    opacity: 0.8;
+}
+
+.fa-asterisk {
+    color: red;
+}
