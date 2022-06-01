@@ -13,7 +13,8 @@ let online = () => {
 }
 
 let offline = () => {
-    const destroy = document.getElementById()
+    const destroy = document.getElementById('destroy')
+    destroy.remove()
 };
 
 if (window.navigator.onLine) {
