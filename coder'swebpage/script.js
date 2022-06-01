@@ -13,13 +13,7 @@ let online = () => {
 }
 
 let offline = () => {
-   status.innerHTML = 'No Connection'
-   status.style.backgroundColor = '#e02401'
-
-   status2.innerHTML = 'No Connection'
-   status2.style.backgroundColor = '#e02401'
-
-   document.getElementById('hide').style.display = "none"
+    const destroy = document.getElementById()
 };
 
 if (window.navigator.onLine) {
