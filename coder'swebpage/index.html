@@ -2,67 +2,113 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anish | Web Developer</title>
+
     <link rel="stylesheet" href="style.css">
-    <title>Coder's Webpage</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
-<body style="font-family: 'Roboto', sans-serif;" id="destroy">
-    <h1 id="content" class="status"></h1>
-     
-    <p id="content" class="status2"></p>
-    <img id="coder" src="https://d1fdloi71mui9q.cloudfront.net/aU6ZglaTSHiNRBZQikv1_QojXcYBgPAvr1seQ" alt="">
 
-    <p id="content"></p>
+<body>
 
-    <p id="content">Click on this button for time</p>
+<header class="hero">
 
-    <button id="content" onclick="myFunction()" type="button" class="btn">Click Me!</button>
+    <img
+        src="https://d1fdloi71mui9q.cloudfront.net/aU6ZglaTSHiNRBZQikv1_QojXcYBgPAvr1seQ"
+        alt="Profile picture of the developer"
+        class="profile-image"
+    >
 
-    <p class="content" id="click"></p>
+    <h1>Hi, I'm Anish 👋</h1>
 
-    <p id="content">You can read me about myself, Just sign in below</p>
+    <p class="subtitle">
+        Web Developer • Programmer • Movie Producer
+    </p>
 
-    <div id="hide" class="container">
-        <form action="movie.html">
-            <h2 id="content">Sign In</h2>
-            <a id="link" href="https://www.google.com/" target="#">Sign in with Google Account</a>
-            <br>
-            <br>
-            <input type="text" placeholder="Enter Your Full Name" required>
-             <br>
-             <br>
-            <input type="email" placeholder="Enter Your Email" required>
-            <br>
-            <br>
-            <input type="password" placeholder="Enter Password" required>
-            <br>
-            <br>
-            <button id = "submit" type="submit">Submit</button>
-        </form>
-    </div>
-     <br>
-     <br>
-    <nav>
-        <div class="row">
-            <ul>
-                <li class="current"><a href="index.html">1</a></li>
-            </ul>
-            
-         <div class="row">
-            <ul>
-                <li><a href="read.html">2</a></li>
-            </ul>
-        </div>
-    </nav>
-    <br>
-    <br>
-    <div class="footer">
-        <footer>
-            <p id="content">Copyright &copy; 2022, All Rights Reserved</p>
-        </footer>
-    </div>
+</header>
 
-    <script src="script.js"></script>
+<section class="clock-section">
+
+    <h2>Current Time</h2>
+
+    <p>Click the button below to display the current time.</p>
+
+    <button onclick="showTime()" class="btn">
+        Show Time
+    </button>
+
+    <p id="timeOutput"></p>
+
+</section>
+
+<section class="about">
+
+    <h2>About Me</h2>
+
+    <p>
+        Welcome to my personal website. I enjoy building websites,
+        coding projects, and creating films.
+    </p>
+
+</section>
+
+<section class="signin-container">
+
+    <form action="movie.html">
+
+        <h2>Sign In</h2>
+
+        <label for="name">Full Name</label>
+        <input
+            id="name"
+            type="text"
+            placeholder="Enter Your Full Name"
+            required
+        >
+
+        <label for="email">Email Address</label>
+        <input
+            id="email"
+            type="email"
+            placeholder="Enter Your Email"
+            required
+        >
+
+        <label for="password">Password</label>
+        <input
+            id="password"
+            type="password"
+            placeholder="Enter Password"
+            required
+        >
+
+        <button type="submit" class="btn">
+            Submit
+        </button>
+
+    </form>
+
+</section>
+
+<nav class="pagination">
+
+    <a href="index.html" class="active">Home</a>
+
+    <a href="read.html">Read More</a>
+
+</nav>
+
+<footer>
+
+    <p>
+        © 2026 Anish. All Rights Reserved.
+    </p>
+
+</footer>
+
+<script src="script.js"></script>
+
 </body>
 </html>
