@@ -5,86 +5,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anish | Web Developer</title>
 
-    <link rel="stylesheet" href="style.css">
+   <!DOCTYPE html>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coder's Webpage</title>
+
+```
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+```
+
 </head>
 
 <body>
 
+```
 <header class="hero">
-
-    <img
-        src="https://d1fdloi71mui9q.cloudfront.net/aU6ZglaTSHiNRBZQikv1_QojXcYBgPAvr1seQ"
-        alt="Profile picture of the developer"
-        class="profile-image"
-    >
-
-    <h1>Hi, I'm Anish 👋</h1>
-
-    <p class="subtitle">
-        Web Developer • Programmer • Movie Producer
+    <h1 class="status">Welcome to My Website</h1>
+    <p class="status2">
+        A simple place to explore, learn, and connect.
     </p>
 
+    <img
+        id="coder"
+        src="https://d1fdloi71mui9q.cloudfront.net/aU6ZglaTSHiNRBZQikv1_QojXcYBgPAvr1seQ"
+        alt="Profile Image">
 </header>
 
-<section class="clock-section">
-
+<section class="card">
     <h2>Current Time</h2>
 
     <p>Click the button below to display the current time.</p>
 
-    <button onclick="showTime()" class="btn">
+    <button onclick="myFunction()" class="btn">
         Show Time
     </button>
 
-    <p id="timeOutput"></p>
-
+    <p id="click"></p>
 </section>
 
-<section class="about">
-
-    <h2>About Me</h2>
+<section class="card">
+    <h2>About This Website</h2>
 
     <p>
-        Welcome to my personal website. I enjoy building websites,
-        coding projects, and creating films.
+        This website contains information, fun projects,
+        and pages that you can explore.
     </p>
-
 </section>
 
-<section class="signin-container">
+<section class="container">
 
     <form action="movie.html">
 
         <h2>Sign In</h2>
 
-        <label for="name">Full Name</label>
+        <a id="link"
+           href="https://www.google.com"
+           target="_blank">
+            Continue with Google
+        </a>
+
+        <br><br>
+
         <input
-            id="name"
             type="text"
             placeholder="Enter Your Full Name"
-            required
-        >
+            required>
 
-        <label for="email">Email Address</label>
+        <br><br>
+
         <input
-            id="email"
             type="email"
             placeholder="Enter Your Email"
-            required
-        >
+            required>
 
-        <label for="password">Password</label>
+        <br><br>
+
         <input
-            id="password"
             type="password"
             placeholder="Enter Password"
-            required
-        >
+            required>
 
-        <button type="submit" class="btn">
+        <br><br>
+
+        <button id="submit" type="submit">
             Submit
         </button>
 
@@ -92,23 +100,20 @@
 
 </section>
 
-<nav class="pagination">
-
+<nav class="navigation">
     <a href="index.html" class="active">Home</a>
-
     <a href="read.html">Read More</a>
-
 </nav>
 
-<footer>
-
+<footer class="footer">
     <p>
-        © 2026 Anish. All Rights Reserved.
+        © 2026 Coder's Webpage. All Rights Reserved.
     </p>
-
 </footer>
 
 <script src="script.js"></script>
+```
 
 </body>
 </html>
+
