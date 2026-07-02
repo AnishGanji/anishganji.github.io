@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>KwicksparK Tutoring</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: #050b18;
+      color: #f5f7ff;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #050b18;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      font-size: 1.2rem;
+    }
+
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #4fd1ff, #1b5cff 55%, #050b18 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .logo span:first-child {
+      color: #7fd3ff;
+    }
+
+    .logo span:last-child {
+      color: #4fd1ff;
+    }
+
+    .nav-links a {
+      margin-left: 1.25rem;
+      text-decoration: none;
+      color: #d7e3ff;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: #7fd3ff;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #4fd1ff, #1b5cff);
+      border: none;
+      color: #050b18;
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.08);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 3.5rem;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+      padding-top: 1rem;
+      padding-bottom: 2.5rem;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(79, 209, 255, 0.08);
+      color: #7fd3ff;
+      font-size: 0.8rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 3vw + 1rem, 3rem);
+      margin-bottom: 0.7rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #7fd3ff, #4fd1ff);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: #c3d2ff;
+      font-size: 0.98rem;
+      max-width: 32rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-secondary {
+      font-size: 0.85rem;
+      color: #9fb3ff;
+    }
+
+    .hero-subjects {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(127, 211, 255, 0.3);
+      color: #c3e8ff;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top, rgba(79, 209, 255, 0.18), transparent 55%),
+                  linear-gradient(145deg, #050b18, #050b18);
+      border-radius: 1.2rem;
+      padding: 1.4rem 1.3rem;
+      border: 1px solid rgba(127, 211, 255, 0.18);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
+    }
+
+    .hero-card-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-card-title span {
+      font-size: 0.9rem;
+      color: #e3ecff;
+      font-weight: 600;
+    }
+
+    .badge {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(79, 209, 255, 0.12);
+      color: #7fd3ff;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.7rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .mini-card {
+      padding: 0.7rem 0.75rem;
+      border-radius: 0.8rem;
+      background: rgba(5, 11, 24, 0.9);
+      border: 1px solid rgba(127, 211, 255, 0.18);
+      font-size: 0.78rem;
+      color: #c3d2ff;
+    }
+
+    .mini-label {
+      font-size: 0.7rem;
+      color: #7fd3ff;
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: #9fb3ff;
+    }
+
+    .dot-row {
+      display: flex;
+      gap: 0.18rem;
+    }
+
+    .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(127, 211, 255, 0.6);
+    }
+
+    /* ABOUT + SUBJECTS */
+    section {
+      margin-top: 2.5rem;
+    }
+
+    h2.section-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: #9fb3ff;
+      margin-bottom: 1.2rem;
+    }
+
+    .subjects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1rem;
+    }
+
+    .subject-card {
+      background: #050b18;
+      border-radius: 0.9rem;
+      border: 1px solid rgba(127, 211, 255, 0.18);
+      padding: 0.9rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    .subject-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+      color: #e3ecff;
+    }
+
+    .subject-card p {
+      font-size: 0.85rem;
+      color: #c3d2ff;
+    }
+
+    /* CONTACT FORM */
+    .contact {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 1.8rem;
+      align-items: flex-start;
+    }
+
+    form {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 0.4rem;
+    }
+
+    label {
+      font-size: 0.85rem;
+      color: #d7e3ff;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.55rem 0.7rem;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(127, 211, 255, 0.25);
+      background: #050b18;
+      color: #f5f7ff;
+      font-size: 0.9rem;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #4fd1ff;
+      box-shadow: 0 0 0 1px rgba(79, 209, 255, 0.4);
+    }
+
+    #thankYouMessage {
+      display: none;
+      margin-top: 1rem;
+      padding: 0.9rem;
+      border-radius: 0.6rem;
+      background: rgba(79, 209, 255, 0.12);
+      color: #7fd3ff;
+      font-size: 1rem;
+      font-weight: 600;
+      animation: fadeIn 0.6s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 1.2rem 1.5rem 1.6rem;
+      font-size: 0.8rem;
+      color: #9fb3ff;
+      text-align: center;
+    }
+
+    @media (max-width: 800px) {
+      .hero,
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        order: -1;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+        gap: 0.7rem;
+      }
+
+      .nav-links {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+
+/* Normal dropdown style */
+.styled-select {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(127, 211, 255, 0.25);
+  background: #050b18;
+  color: #f5f7ff;
+  font-size: 0.9rem;
+  appearance: none;
+  cursor: pointer;
+}
+
+/* ⭐ Placeholder grey when no option selected */
+.styled-select:invalid {
+  color: #a1a5b8; /* your grey placeholder color */
+}
+
+/* Options styling */
+.styled-select option {
+  background: #050b18;
+  color: #f5f7ff;
+}
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <header>
+    <div class="nav">
+      <div class="logo">
+        <div class="logo-icon">K</div>
+        <span>KwicksparK</span>
+      </div>
+      <div class="nav-links">
+        <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+          Get Started
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <div class="hero-tag">
+          <span>⚡</span>
+          <span>1‑on‑1 Math & Coding Tutoring</span>
+        </div>
+        <h1>
+          Brighten your <span>FUTURE</span> with KwicksparK.
+        </h1>
+        <p>
+          Personalized tutoring in math and coding for students.
+          Clear explanations, step‑by‑step practice, and a focus on real understanding.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+            Book a free intro session
+          </button>
+          <span class="hero-secondary">Online sessions • Flexible scheduling</span>
+        </div>
+        <div class="hero-subjects">
+          <div class="pill">Algebra & Geometry</div>
+          <div class="pill">Python basics</div>
+          <div class="pill">Problem‑solving skills</div>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="hero-card-title">
+          <span>STEM Progress Snapshot</span>
+          <span class="badge">Student view</span>
+        </div>
+        <div class="hero-grid">
+          <div class="mini-card">
+            <div class="mini-label">Math mastery</div>
+            +32% improvement in quiz scores
+          </div>
+          <div class="mini-card">
+            <div class="mini-label">Coding skills</div>
+            Loops, functions, and projects built
+          </div>
+          <div class="mini-card">
+            <div class="mini-label">Confidence</div>
+            “I finally understand the steps.”
+          </div>
+          <div class="mini-card">
+            <div class="mini-label">Support</div>
+            Homework help + exam prep
+          </div>
+        </div>
+        <div class="hero-footer">
+          <div class="dot-row">
+            <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+          </div>
+          <span>Designed for middle & high school learners</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2 class="section-title">About KwicksparK Tutoring</h2>
+      <p class="section-subtitle">
+        A student‑run tutoring initiative focused on making math and coding less scary and more fun.
+      </p>
+      <p style="color:#c3d2ff; font-size:0.95rem; max-width:46rem;">
+        KwicksparK offers friendly, patient, and structured 1‑on‑1 sessions. We break problems into
+        simple steps, explain the “why” behind each concept, and give students space to ask questions
+        without feeling rushed or judged. Whether it’s algebra homework, coding projects, or exam prep,
+        we focus on building real understanding—not just memorizing formulas.
+      </p>
+    </section>
+
+    <!-- SUBJECTS -->
+    <section id="subjects">
+      <h2 class="section-title">What we tutor</h2>
+      <p class="section-subtitle">Core math and beginner‑friendly coding support.</p>
+
+      <div class="subjects-grid">
+        <div class="subject-card">
+          <h3>Middle school math</h3>
+          <p>Fractions, equations, word problems, and foundations that make high school math easier.</p>
+        </div>
+        <div class="subject-card">
+          <h3>Algebra & Geometry</h3>
+          <p>Linear equations, systems, functions, triangles, proofs, and test preparation.</p>
+        </div>
+        <div class="subject-card">
+          <h3>Python programming</h3>
+          <p>Variables, loops, conditionals, functions, and small projects to build confidence.</p>
+        </div>
+        <div class="subject-card">
+          <h3>Study & problem‑solving skills</h3>
+          <p>How to read questions carefully, show work clearly, and avoid common mistakes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" style="margin-top:3rem;">
+      <h2 class="section-title">Contact & sign‑up</h2>
+      <p class="section-subtitle">
+        Need a spark in Math or Coding(Scratch, Python, etc)? Message us and we’ll guide you.
+      </p>
+
+      <div class="contact">
+        <div>
+          <form id="supportForm">
+              <div>
+                <label for="name">Student/Parent Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Your Full Name" required />
+              </div>
+
+              <div>
+                <label for="email">Student/Parent Email Address</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required />
+              </div>
+
+              <!-- ⭐ GRADE DROPDOWN -->
+              <div>
+                <label for="grade">Student Grade Level</label>
+                <select id="grade" name="grade" required class="styled-select">
+                  <option value="" disabled selected>Select Grade</option>
+                  <option value="6th Grade">6th Grade</option>
+                  <option value="7th Grade">7th Grade</option>
+                  <option value="8th Grade">8th Grade</option>
+                  <option value="9th Grade">9th Grade</option>
+                  <option value="10th Grade">10th Grade</option>
+                  <option value="11th Grade">11th Grade</option>
+                  <option value="12th Grade">12th Grade</option>
+                </select>
+              </div>
+
+              <!-- ⭐ COURSE DROPDOWN (FIXED ID + NAME) -->
+              <div>
+                <label for="course">Type of Course</label>
+                <select id="course" name="course" required class="styled-select">
+                  <option value="" disabled selected>Select Course</option>
+                  <option value="Middle School Math">Middle School Math</option>
+                  <option value="High School Math">High School Math (Math 1, Math 2, Math 3)</option>
+                  <option value="AP Precalculus">AP Precalculus</option>
+                  <option value="Python Programming">Python Programming</option>
+                  <option value="Scratch Coding">Scratch Coding</option>
+                </select>
+              </div>
+              <button class="btn-primary" type="submit">Send Request</button>
+            </form>
+
+<div id="thankYouMessage">
+  Thank you for applying! We’ll contact you soon.
+</div>
+
+
+          <div id="thankYouMessage">
+            Thank you for applying! We’ll contact you soon.
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 KwicksparK, All Rights Reserved
+    </footer>
+    <!-- ⭐ GOOGLE SHEETS SUBMISSION SCRIPT -->
+
+<script>
+  document.getElementById("supportForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const formData = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      grade: document.getElementById("grade").value,
+      course: document.getElementById("course").value
+    };
+
+    fetch("https://script.google.com/macros/s/AKfycbyqjxHhOssZIUp3jKkTbREstxLd9ISsQ8xOO5gRisn2OTGcZSspXN8Y22M2tty-lmSV/exec", {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
+    });
+
+    document.getElementById("thankYouMessage").style.display = "block";
+    document.getElementById("supportForm").reset();
+  });
+</script>
+
