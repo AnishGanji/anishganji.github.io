@@ -79,7 +79,7 @@ body {
   }
 
   .game-area {
-    background: #7ebbf8;;
+    background: #2d8ceb;;
     border-radius: 14px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     padding: 20px;
@@ -191,11 +191,43 @@ body {
       width: 100%;
     }
   }
+  
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.logo {
+    width: 360px;
+    height: auto;          /* keeps the logo proportional */
+    display: block;
+
+    margin: 0 auto -8px auto;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    line-height: 1.1;
+}
+
+.subtitle {
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
 </style>
 
 </head>
 <body>
   <div class="container">
+
+    <div class="logo-container">
+        <img src="logo.png" class="logo" alt="Logo">
+    </div>
+
     <h1>Morning Spirit Boost Hub</h1>
     <p class="subtitle">Short, gentle games to lift your mood and focus your mind.</p>
 
@@ -222,6 +254,9 @@ body {
     <!-- Game area -->
     <div id="game-area" class="game-area">
       <p class="center">Choose a game above to start your morning boost ✨</p>
+      <div class="logo-container">
+        <img src="logo.png" class="logo" alt="Logo">
+    </div>
     </div>
   </div>
 
