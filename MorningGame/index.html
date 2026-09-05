@@ -1,531 +1,2577 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
-  <title>Morning Boost</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Morning Spirit Boost</title>
+
+  <!-- Google Font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Sounds -->
   <audio id="success-sound">
-        <source src="./meldix-success-340660.mp3" type="audio/mpeg">
+    <source src="./meldix-success-340660.mp3" type="audio/mpeg">
   </audio>
 
   <audio id="fail-sound">
-        <source src="./u_8g40a9z0la-fail-234710.mp3" type="audio/mpeg">
+    <source src="./u_8g40a9z0la-fail-234710.mp3" type="audio/mpeg">
   </audio>
-<style>
-body {
-  font-family: 'Baloo Tammudu 2', cursive;
-  background: linear-gradient(135deg, #5fa3e6, #4f94e0);
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
-}
-
-  .container {
-    max-width: 900px;
-    width: 100%;
-    padding: 20px;
-  }
-
-  h1, h2 {
-    text-align: center;
-    color: #1f3b70;
-  }
-
-  .subtitle {
-    text-align: center;
-    color: #4a6fa1;
-    margin-bottom: 20px;
-  }
-
-  .game-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-    margin-bottom: 30px;
-  }
-
-.game-card {
-  background: #d9ecff; /* soft blue background */
-  border-radius: 14px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  padding: 15px;
-  width: 210px;
-  cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s;
-  border: 2px solid #9fc6ff; /* slightly darker blue border */
-}
 
 
-  .game-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-    border-color: #9fc6ff;
-  }
+  <style>
 
-  .game-card h3 {
-    margin: 0 0 8px;
-    font-size: 18px;
-    color: #1f3b70;
-  }
+    /* =====================================================
+       GLOBAL
+    ===================================================== */
 
-  .game-card p {
-    margin: 0;
-    font-size: 13px;
-    color: #4a6fa1;
-  }
-
-  .game-area {
-    background: #2d8ceb;;
-    border-radius: 14px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    padding: 20px;
-    min-height: 240px;
-    border: 2px solid #cfe3ff;
-  }
-
-  .btn {
-    display: inline-block;
-    padding: 10px 18px;
-    border-radius: 10px;
-    border: none;
-    background: #4b9cff;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    margin: 5px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  }
-
-  .btn:hover {
-    background: #3a8af0;
-  }
-
-  .btn.secondary {
-    background: #8aa8c9;
-  }
-
-  .center {
-    text-align: center;
-  }
-
-  /* Reaction tap */
-  .reaction-box {
-    width: 150px;
-    height: 150px;
-    margin: 20px auto;
-    border-radius: 16px;
-    background: #d7e6ff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #1f3b70;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-  }
-
-  /* Odd one out grid */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(4, 50px);
-    gap: 10px;
-    justify-content: center;
-    margin-top: 15px;
-  }
-
-  .grid-item {
-    width: 50px;
-    height: 50px;
-    border-radius: 10px;
-    background: #bcd4ff;
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  }
-
-  /* Pattern puzzle */
-  .pattern-row {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 15px;
-  }
-
-  .pattern-cell {
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
-    background: #e3efff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    font-weight: bold;
-    color: #1f3b70;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-  }
-
-  input[type="text"] {
-    padding: 8px;
-    border-radius: 10px;
-    border: 2px solid #cfe3ff;
-    margin-top: 10px;
-    font-size: 14px;
-    background: #f5faff;
-  }
-
-  /* Maze */
-  #maze {
-    width: 260px;
-    height: 260px;
-    margin: 20px auto;
-    display: grid;
-    gap: 6px;
-  }
-
-  @media (max-width: 600px) {
-    .game-card {
-      width: 100%;
+    * {
+      box-sizing: border-box;
     }
-  }
-  
-.logo-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-}
 
-.logo {
-    width: 360px;
-    height: auto;          /* keeps the logo proportional */
-    display: block;
+    :root {
+      --primary: #3478f6;
+      --primary-dark: #245dcc;
+      --primary-light: #eaf2ff;
 
-    margin: 0 auto -8px auto;
-}
+      --background: #f5f8fc;
+      --white: #ffffff;
 
-h1 {
-    margin: 0;
-    padding: 0;
-    line-height: 1.1;
-}
+      --text: #17233d;
+      --text-light: #68758d;
 
-.subtitle {
-    margin-top: 10px;
-    margin-bottom: 25px;
-}
-</style>
+      --border: #e2e8f1;
 
+      --success: #35b875;
+      --success-light: #e7f8ef;
+
+      --danger: #df5c5c;
+
+      --shadow:
+        0 8px 25px rgba(35, 58, 95, 0.07);
+
+      --shadow-hover:
+        0 14px 32px rgba(35, 58, 95, 0.12);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+
+      font-family: "Poppins", sans-serif;
+
+      background: var(--background);
+
+      color: var(--text);
+
+      min-height: 100vh;
+    }
+
+    button,
+    input {
+      font-family: inherit;
+    }
+
+
+    /* =====================================================
+       SIDEBAR
+    ===================================================== */
+
+    .sidebar {
+      position: fixed;
+
+      left: 0;
+      top: 0;
+
+      width: 230px;
+      height: 100vh;
+
+      background: var(--white);
+
+      border-right: 1px solid var(--border);
+
+      padding: 28px 18px;
+
+      display: flex;
+      flex-direction: column;
+
+      z-index: 100;
+
+      box-shadow:
+        4px 0 20px rgba(35, 58, 95, 0.04);
+    }
+
+
+    /* Sidebar logo */
+
+    .sidebar-logo {
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+
+      padding: 8px 5px 24px;
+    }
+
+    .sidebar-logo img {
+      width: 175px;
+
+      max-width: 100%;
+
+      height: auto;
+
+      display: block;
+    }
+
+
+    /* Divider */
+
+    .sidebar-divider {
+      height: 1px;
+
+      background: var(--border);
+
+      margin: 0 5px 20px;
+    }
+
+
+    /* Navigation */
+
+    .sidebar-nav {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 6px;
+    }
+
+    .sidebar-link {
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      padding: 12px 14px;
+
+      border-radius: 11px;
+
+      color: var(--text-light);
+
+      text-decoration: none;
+
+      font-size: 13px;
+
+      font-weight: 500;
+
+      transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .sidebar-link span {
+      width: 22px;
+
+      text-align: center;
+
+      font-size: 17px;
+    }
+
+    .sidebar-link:hover {
+      background: var(--primary-light);
+
+      color: var(--primary);
+
+      transform: translateX(2px);
+    }
+
+    .sidebar-link.active {
+      background: var(--primary-light);
+
+      color: var(--primary);
+
+      font-weight: 600;
+    }
+
+
+    /* Sidebar bottom */
+
+    .sidebar-bottom {
+      margin-top: auto;
+
+      padding: 15px;
+
+      border-radius: 13px;
+
+      background: #f5f8fc;
+
+      color: var(--text-light);
+
+      font-size: 11px;
+
+      line-height: 1.6;
+    }
+
+    .sidebar-bottom p {
+      margin: 0;
+    }
+
+    .sidebar-bottom strong {
+      color: var(--text);
+    }
+
+
+    /* =====================================================
+       MAIN CONTENT
+    ===================================================== */
+
+    .main {
+      margin-left: 230px;
+
+      min-height: 100vh;
+    }
+
+    .container {
+      width: min(1100px, calc(100% - 60px));
+
+      margin: 0 auto;
+
+      padding: 45px 0 50px;
+    }
+
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    .hero {
+      text-align: center;
+
+      padding-top: 10px;
+
+      margin-bottom: 35px;
+    }
+
+    .hero h1 {
+      margin: 0;
+
+      font-size: clamp(32px, 5vw, 52px);
+
+      line-height: 1.15;
+
+      letter-spacing: -1.5px;
+
+      font-weight: 700;
+
+      color: var(--text);
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .subtitle {
+      max-width: 680px;
+
+      margin: 13px auto 0;
+
+      color: var(--text-light);
+
+      font-size: 15px;
+
+      line-height: 1.7;
+    }
+
+
+    /* =====================================================
+       STATS
+    ===================================================== */
+
+    .stats {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 16px;
+
+      margin-bottom: 38px;
+    }
+
+    .stat-card {
+      background: var(--white);
+
+      border: 1px solid var(--border);
+
+      border-radius: 16px;
+
+      padding: 19px;
+
+      text-align: center;
+
+      box-shadow: var(--shadow);
+    }
+
+    .stat-number {
+      font-size: 24px;
+
+      font-weight: 700;
+
+      color: var(--primary);
+    }
+
+    .stat-label {
+      margin-top: 2px;
+
+      font-size: 11px;
+
+      color: var(--text-light);
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.7px;
+    }
+
+
+    /* =====================================================
+       SECTION HEADER
+    ===================================================== */
+
+    .section-heading {
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: end;
+
+      margin-bottom: 17px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+
+      font-size: 21px;
+
+      font-weight: 600;
+    }
+
+    .section-heading p {
+      margin: 3px 0 0;
+
+      color: var(--text-light);
+
+      font-size: 13px;
+    }
+
+
+    /* =====================================================
+       GAME CARDS
+    ===================================================== */
+
+    .game-list {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 16px;
+
+      margin-bottom: 28px;
+    }
+
+    .game-card {
+      position: relative;
+
+      background: var(--white);
+
+      border: 1px solid var(--border);
+
+      border-radius: 18px;
+
+      padding: 20px;
+
+      cursor: pointer;
+
+      overflow: hidden;
+
+      box-shadow: var(--shadow);
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .game-card:hover {
+      transform: translateY(-5px);
+
+      box-shadow: var(--shadow-hover);
+
+      border-color: #c8d9f8;
+    }
+
+    .game-card::after {
+      content: "";
+
+      position: absolute;
+
+      width: 75px;
+      height: 75px;
+
+      right: -30px;
+      bottom: -30px;
+
+      border-radius: 50%;
+
+      background: var(--primary-light);
+    }
+
+
+    /* Game icon */
+
+    .game-icon {
+      width: 46px;
+      height: 46px;
+
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+
+      background: var(--primary-light);
+
+      border-radius: 13px;
+
+      font-size: 21px;
+
+      margin-bottom: 15px;
+    }
+
+    .game-card h3 {
+      margin: 0 0 7px;
+
+      font-size: 16px;
+
+      font-weight: 600;
+    }
+
+    .game-card p {
+      margin: 0;
+
+      font-size: 12px;
+
+      line-height: 1.6;
+
+      color: var(--text-light);
+    }
+
+    .play-label {
+      display: inline-block;
+
+      margin-top: 15px;
+
+      color: var(--primary);
+
+      font-size: 12px;
+
+      font-weight: 600;
+    }
+
+
+    /* =====================================================
+       GAME AREA
+    ===================================================== */
+
+    .game-area {
+      position: relative;
+
+      min-height: 330px;
+
+      padding: 35px 25px;
+
+      background: var(--white);
+
+      border: 1px solid var(--border);
+
+      border-radius: 22px;
+
+      box-shadow: var(--shadow);
+
+      overflow: hidden;
+    }
+
+    .game-area::before {
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      height: 4px;
+
+      background: linear-gradient(
+        90deg,
+        #3478f6,
+        #75a8ff
+      );
+    }
+
+    .game-title {
+      margin: 0;
+
+      text-align: center;
+
+      font-size: 25px;
+
+      font-weight: 600;
+    }
+
+    .game-description {
+      max-width: 600px;
+
+      margin: 7px auto 25px;
+
+      text-align: center;
+
+      color: var(--text-light);
+
+      font-size: 13px;
+
+      line-height: 1.6;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+
+    /* =====================================================
+       EMPTY GAME STATE
+    ===================================================== */
+
+    .empty-state {
+      min-height: 260px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+
+      align-items: center;
+
+      text-align: center;
+    }
+
+    .empty-icon {
+      width: 68px;
+      height: 68px;
+
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+
+      margin-bottom: 15px;
+
+      border-radius: 20px;
+
+      background: var(--primary-light);
+
+      font-size: 30px;
+    }
+
+    .empty-state h2 {
+      margin: 0 0 7px;
+
+      font-size: 20px;
+
+      font-weight: 600;
+    }
+
+    .empty-state p {
+      margin: 0;
+
+      color: var(--text-light);
+
+      font-size: 13px;
+    }
+
+
+    /* =====================================================
+       BUTTONS
+    ===================================================== */
+
+    .btn {
+      display: inline-flex;
+
+      justify-content: center;
+      align-items: center;
+
+      gap: 7px;
+
+      padding: 11px 20px;
+
+      border: none;
+
+      border-radius: 11px;
+
+      background: var(--primary);
+
+      color: white;
+
+      font-size: 13px;
+
+      font-weight: 600;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 5px 14px rgba(52, 120, 246, 0.22);
+
+      transition:
+        transform 0.15s ease,
+        background 0.15s ease;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+
+      transform: translateY(-2px);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn.secondary {
+      background: #eef2f7;
+
+      color: #526079;
+
+      box-shadow: none;
+    }
+
+    .btn.secondary:hover {
+      background: #e2e8f0;
+    }
+
+
+    /* =====================================================
+       REACTION GAME
+    ===================================================== */
+
+    .reaction-box {
+      width: 175px;
+      height: 175px;
+
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+
+      margin: 25px auto;
+
+      border-radius: 22px;
+
+      background: var(--primary-light);
+
+      border: 2px solid #d9e6fb;
+
+      color: var(--text);
+
+      font-size: 15px;
+
+      font-weight: 600;
+
+      cursor: pointer;
+
+      user-select: none;
+
+      transition:
+        background 0.15s ease,
+        transform 0.15s ease;
+    }
+
+    .reaction-box:active {
+      transform: scale(0.97);
+    }
+
+
+    /* =====================================================
+       RESULTS
+    ===================================================== */
+
+    .result {
+      min-height: 25px;
+
+      margin: 15px 0 0;
+
+      font-size: 13px;
+
+      font-weight: 600;
+    }
+
+    .result.success {
+      color: var(--success);
+    }
+
+    .result.error {
+      color: var(--danger);
+    }
+
+
+    /* =====================================================
+       ODD ONE OUT
+    ===================================================== */
+
+    .grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 58px);
+
+      gap: 11px;
+
+      justify-content: center;
+
+      margin: 25px 0;
+    }
+
+    .grid-item {
+      width: 58px;
+      height: 58px;
+
+      border-radius: 13px;
+
+      border: 2px solid transparent;
+
+      cursor: pointer;
+
+      transition:
+        transform 0.15s ease,
+        border-color 0.15s ease;
+    }
+
+    .grid-item:hover {
+      transform: scale(1.06);
+
+      border-color: #b8cef4;
+    }
+
+
+    /* =====================================================
+       PATTERN GAME
+    ===================================================== */
+
+    .pattern-row {
+      display: flex;
+
+      justify-content: center;
+
+      gap: 10px;
+
+      margin: 25px 0;
+    }
+
+    .pattern-cell {
+      width: 55px;
+      height: 55px;
+
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+
+      border-radius: 14px;
+
+      background: #f2f6fc;
+
+      border: 1px solid var(--border);
+
+      font-size: 18px;
+
+      font-weight: 600;
+    }
+
+    .pattern-cell:last-child {
+      background: var(--primary-light);
+
+      color: var(--primary);
+
+      border-color: #cfe0fb;
+    }
+
+    .input-group {
+      display: flex;
+
+      justify-content: center;
+
+      gap: 8px;
+
+      flex-wrap: wrap;
+    }
+
+    input[type="text"] {
+      width: 150px;
+
+      padding: 11px 13px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 11px;
+
+      outline: none;
+
+      background: white;
+
+      color: var(--text);
+
+      font-size: 13px;
+
+      transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    input[type="text"]:focus {
+      border-color: var(--primary);
+
+      box-shadow:
+        0 0 0 3px var(--primary-light);
+    }
+
+
+    /* =====================================================
+       MAZE
+    ===================================================== */
+
+    #maze {
+      width: 275px;
+      height: 275px;
+
+      display: grid;
+
+      gap: 5px;
+
+      margin: 20px auto;
+
+      padding: 5px;
+
+      background: #eef3fa;
+
+      border: 1px solid var(--border);
+
+      border-radius: 16px;
+    }
+
+    .maze-cell {
+      border-radius: 7px;
+
+      transition:
+        background 0.15s ease,
+        box-shadow 0.15s ease;
+    }
+
+    .maze-controls {
+      margin-top: 15px;
+    }
+
+    .maze-controls .btn {
+      min-width: 48px;
+
+      padding: 10px;
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    footer {
+      margin-left: 230px;
+
+      padding: 25px 20px 35px;
+
+      text-align: center;
+
+      color: var(--text-light);
+
+      font-size: 11px;
+
+      line-height: 1.7;
+    }
+
+    footer strong {
+      color: var(--text);
+    }
+
+
+    /* =====================================================
+       ANIMATION
+    ===================================================== */
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+
+        transform:
+          translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+
+        transform:
+          translateY(0);
+      }
+    }
+
+    .game-area > * {
+      animation:
+        fadeIn 0.25s ease;
+    }
+
+
+    /* =====================================================
+       TABLET
+    ===================================================== */
+
+    @media (max-width: 950px) {
+
+      .game-list {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+    }
+
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media (max-width: 700px) {
+
+      .sidebar {
+        width: 70px;
+
+        padding: 18px 8px;
+      }
+
+      .sidebar-logo {
+        padding: 5px 2px 18px;
+      }
+
+      .sidebar-logo img {
+        width: 50px;
+      }
+
+      .sidebar-divider {
+        margin-left: 3px;
+        margin-right: 3px;
+      }
+
+      .sidebar-link {
+        justify-content: center;
+
+        padding: 12px 5px;
+      }
+
+      .sidebar-link span {
+        font-size: 19px;
+      }
+
+      .sidebar-link {
+        font-size: 0;
+      }
+
+      .sidebar-bottom {
+        display: none;
+      }
+
+      .main {
+        margin-left: 70px;
+      }
+
+      .container {
+        width: calc(100% - 30px);
+
+        padding: 30px 0 40px;
+      }
+
+      footer {
+        margin-left: 70px;
+      }
+
+      .hero {
+        padding-top: 0;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .subtitle {
+        font-size: 13px;
+      }
+
+      .stats {
+        gap: 8px;
+      }
+
+      .stat-card {
+        padding: 13px 7px;
+      }
+
+      .stat-number {
+        font-size: 20px;
+      }
+
+      .stat-label {
+        font-size: 8px;
+      }
+
+      .game-list {
+        grid-template-columns: 1fr;
+      }
+
+      .game-area {
+        padding: 30px 15px;
+      }
+
+      #maze {
+        width: min(275px, 82vw);
+        height: min(275px, 82vw);
+      }
+
+    }
+
+  </style>
 </head>
+
+
 <body>
-  <div class="container">
 
-    <div class="logo-container">
-        <img src="./logo.png" class="logo" alt="Logo">
+
+  <!-- =====================================================
+       SIDEBAR
+  ===================================================== -->
+
+  <aside class="sidebar">
+
+    <!-- Your MorningBoost image -->
+    <div class="sidebar-logo">
+
+      <img
+        src="./logo.png"
+        alt="MorningBoost"
+      >
+
     </div>
 
-    <h1>Morning Spirit Boost Hub</h1>
-    <p class="subtitle">Short, gentle games to lift your mood and focus your mind.</p>
 
-    <!-- Game selection -->
-    <div class="game-list">
-      <div class="game-card" onclick="showGame('reaction')">
-        <h3>Reaction Tap</h3>
-        <p>Tap as soon as the box turns green.</p>
-      </div>
-      <div class="game-card" onclick="showGame('odd')">
-        <h3>Odd One Out</h3>
-        <p>Find the different tile.</p>
-      </div>
-      <div class="game-card" onclick="showGame('maze')">
-        <h3>Gentle Maze Escape</h3>
-        <p>Players guides a glowing blue square to the goal.</p>
-      </div>
-      <div class="game-card" onclick="showGame('pattern')">
-        <h3>Daily Pattern Puzzle</h3>
-        <p>Guess the missing number.</p>
-      </div>
+    <div class="sidebar-divider"></div>
+
+
+    <!-- Navigation -->
+    <nav class="sidebar-nav">
+
+      <a
+        href="#home"
+        class="sidebar-link active"
+      >
+        <span>🏠</span>
+        Home
+      </a>
+
+
+      <a
+        href="#games"
+        class="sidebar-link"
+      >
+        <span>🎮</span>
+        Games
+      </a>
+
+
+      <a
+        href="#progress"
+        class="sidebar-link"
+      >
+        <span>📊</span>
+        Progress
+      </a>
+
+    </nav>
+
+
+    <!-- Sidebar message -->
+    <div class="sidebar-bottom">
+
+      <p>
+        <strong>Morning Boost</strong>
+      </p>
+
+      <p>
+        Small games.
+        Better focus.
+      </p>
+
     </div>
 
-    <!-- Game area -->
-    <div id="game-area" class="game-area">
-      <p class="center">Choose a game above to start your morning boost ✨</p>
-      <div class="logo-container">
-        <img src="logo.png" class="logo" alt="Logo">
+  </aside>
+
+
+
+  <!-- =====================================================
+       MAIN
+  ===================================================== -->
+
+  <main class="main">
+
+    <div
+      class="container"
+      id="home"
+    >
+
+
+      <!-- =================================================
+           HERO
+      ================================================= -->
+
+      <section class="hero">
+
+        <h1>
+          Morning
+          <span>Spirit</span>
+          Boost
+        </h1>
+
+        <p class="subtitle">
+          Short, gentle games designed to help you start
+          your morning with a little more focus, energy,
+          and fun.
+        </p>
+
+      </section>
+
+
+
+      <!-- =================================================
+           STATS
+      ================================================= -->
+
+      <section
+        class="stats"
+        id="progress"
+      >
+
+        <div class="stat-card">
+
+          <div
+            class="stat-number"
+            id="games-played"
+          >
+            0
+          </div>
+
+          <div class="stat-label">
+            Games Played
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div
+            class="stat-number"
+            id="games-won"
+          >
+            0
+          </div>
+
+          <div class="stat-label">
+            Wins
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div
+            class="stat-number"
+            id="best-time"
+          >
+            —
+          </div>
+
+          <div class="stat-label">
+            Best Reaction
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- =================================================
+           GAME SECTION
+      ================================================= -->
+
+      <section id="games">
+
+        <div class="section-heading">
+
+          <div>
+
+            <h2>
+              Choose a game
+            </h2>
+
+            <p>
+              Pick a quick challenge to get started.
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- GAME CARDS -->
+
+        <div class="game-list">
+
+
+          <!-- Reaction -->
+
+          <div
+            class="game-card"
+            onclick="showGame('reaction')"
+          >
+
+            <div class="game-icon">
+              ⚡
+            </div>
+
+            <h3>
+              Reaction Tap
+            </h3>
+
+            <p>
+              Test how quickly you can react when
+              the box changes.
+            </p>
+
+            <span class="play-label">
+              Play →
+            </span>
+
+          </div>
+
+
+
+          <!-- Odd One Out -->
+
+          <div
+            class="game-card"
+            onclick="showGame('odd')"
+          >
+
+            <div class="game-icon">
+              🎨
+            </div>
+
+            <h3>
+              Odd One Out
+            </h3>
+
+            <p>
+              Find the tile that is slightly different
+              from the others.
+            </p>
+
+            <span class="play-label">
+              Play →
+            </span>
+
+          </div>
+
+
+
+          <!-- Maze -->
+
+          <div
+            class="game-card"
+            onclick="showGame('maze')"
+          >
+
+            <div class="game-icon">
+              🧭
+            </div>
+
+            <h3>
+              Gentle Maze
+            </h3>
+
+            <p>
+              Guide the blue player through the maze
+              to reach the goal.
+            </p>
+
+            <span class="play-label">
+              Play →
+            </span>
+
+          </div>
+
+
+
+          <!-- Pattern -->
+
+          <div
+            class="game-card"
+            onclick="showGame('pattern')"
+          >
+
+            <div class="game-icon">
+              🧩
+            </div>
+
+            <h3>
+              Daily Pattern
+            </h3>
+
+            <p>
+              Look for the pattern and figure out
+              the missing number.
+            </p>
+
+            <span class="play-label">
+              Play →
+            </span>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- =================================================
+           GAME AREA
+      ================================================= -->
+
+      <section
+        id="game-area"
+        class="game-area"
+      >
+
+        <div class="empty-state">
+
+          <div class="empty-icon">
+            ✨
+          </div>
+
+          <h2>
+            Ready for your morning boost?
+          </h2>
+
+          <p>
+            Choose one of the games above to begin.
+          </p>
+
+        </div>
+
+      </section>
+
     </div>
-    </div>
-  </div>
+
+  </main>
+
+
+
+  <!-- =====================================================
+       FOOTER
+  ===================================================== -->
+
+  <footer>
+
+    <strong>
+      Morning Spirit Boost Hub
+    </strong>
+
+    <br>
+
+    Small games. Better focus. Brighter mornings.
+
+    <br>
+
+    © 2026 Morning Boost
+
+  </footer>
+
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ===================================================== -->
 
   <script>
+
+
+    /* =====================================================
+       VARIABLES
+    ===================================================== */
+
     let reactionTimeout = null;
+
     let reactionStartTime = null;
+
     let dailyPattern = null;
 
+    let gamesPlayed = 0;
+
+    let gamesWon = 0;
+
+    let bestReaction = null;
+
+
+
+    /* =====================================================
+       UPDATE STATS
+    ===================================================== */
+
+    function updateStats() {
+
+      document.getElementById(
+        "games-played"
+      ).textContent = gamesPlayed;
+
+
+      document.getElementById(
+        "games-won"
+      ).textContent = gamesWon;
+
+
+      document.getElementById(
+        "best-time"
+      ).textContent =
+        bestReaction === null
+          ? "—"
+          : Math.round(bestReaction) + " ms";
+
+    }
+
+
+
+    /* =====================================================
+       RECORD GAME
+    ===================================================== */
+
+    function recordGame(won = false) {
+
+      gamesPlayed++;
+
+
+      if (won) {
+        gamesWon++;
+      }
+
+
+      updateStats();
+
+    }
+
+
+
+    /* =====================================================
+       SHOW GAME
+    ===================================================== */
+
     function showGame(name) {
-      const area = document.getElementById('game-area');
-      clearTimeout(reactionTimeout);
 
-      if (name === 'reaction') {
-        area.innerHTML = `
-          <h2 class="center">Reaction Tap</h2>
-          <p class="center">Tap the box as soon as it turns <b>green</b>.</p>
-          <div id="reaction-box" class="reaction-box">Wait...</div>
-          <div class="center"><button class="btn" onclick="startReaction()">Start</button></div>
-          <p id="reaction-result" class="center"></p>
-        `;
-      }
-
-      if (name === 'odd') {
-        area.innerHTML = `
-          <h2 class="center">Odd One Out</h2>
-          <p class="center">One tile is a different color. Tap the odd one.</p>
-          <div id="odd-grid" class="grid"></div>
-          <p id="odd-result" class="center"></p>
-          <div class="center"><button class="btn" onclick="setupOddGrid()">New Round</button></div>
-        `;
-        setupOddGrid();
-      }
-
-      if (name === 'maze') {
-        area.innerHTML = `
-          <h2 class="center">Gentle Maze Escape</h2>
-          <p class="center">Players guides a glowing blue square to the goal.</p>
-          <div id="maze"></div>
-          <div class="center" style="margin-top: 15px;">
-            <button class="btn" onclick="mazeMove('up')">⬆️</button>
-          </div>
-          <div class="center">
-            <button class="btn" onclick="mazeMove('left')">⬅️</button>
-            <button class="btn" onclick="mazeMove('down')">⬇️</button>
-            <button class="btn" onclick="mazeMove('right')">➡️</button>
-          </div>
-          <p id="maze-result" class="center"></p>
-        `;
-        startMaze();
-      }
-
-      if (name === 'pattern') {
-        area.innerHTML = `
-          <h2 class="center">Daily Pattern Puzzle</h2>
-          <p class="center">Guess the missing number.</p>
-          <div id="pattern-row" class="pattern-row"></div>
-          <div class="center">
-            <input type="text" id="pattern-input" placeholder="Your guess">
-            <button class="btn" onclick="checkPattern()">Submit</button>
-          </div>
-          <p id="pattern-result" class="center"></p>
-          <div class="center"><button class="btn secondary" onclick="newPattern()">New Pattern</button></div>
-        `;
-        newPattern();
-      }
-    }
-
-    /* Reaction Tap */
-    function startReaction() {
-      const box = document.getElementById('reaction-box');
-      const result = document.getElementById('reaction-result');
-      result.textContent = '';
-      box.style.background = '#cfd8ff';
-      box.textContent = 'Wait...';
-      box.onclick = null;
-
-      const delay = 1000 + Math.random() * 3000;
-      reactionTimeout = setTimeout(() => {
-        box.style.background = '#7bd389';
-        box.textContent = 'Tap!';
-        reactionStartTime = performance.now();
-        box.onclick = () => {
-          const time = performance.now() - reactionStartTime;
-          result.textContent = `Your reaction time: ${Math.round(time)} ms`;
-          document.getElementById("success-sound").play();
-          box.onclick = null;
-          box.textContent = 'Done';
-        };
-      }, delay);
-    }
-
-    /* Odd One Out */
-function setupOddGrid() {
-  const grid = document.getElementById('odd-grid');
-  const result = document.getElementById('odd-result');
-  result.textContent = '';
-  grid.innerHTML = '';
-
-  const oddIndex = Math.floor(Math.random() * 8);
-
-  for (let i = 0; i < 8; i++) {
-    const div = document.createElement('div');
-    div.className = 'grid-item';
-
-    if (i === oddIndex) div.style.background = '#baffc9';
-
-    div.onclick = () => {
-      if (i === oddIndex) {
-        result.textContent = 'Nice! You found the odd one 🎉';
-
-        // ⭐ PLAY SOUND HERE
-        document.getElementById("success-sound").play();
-
-      } else {
-        document.getElementById("fail-sound").play();
-        result.textContent = 'Not quite. Try again.';
-      }
-    };
-
-    grid.appendChild(div);
-  }
-}
-
-    /* Gentle Maze Escape — Guaranteed Solvable */
-    function startMaze() {
-      const size = 5;
-      let mazeLayout = generatePerfectMaze(size);
-      let playerPos = { row: 0, col: 0 };
-
-      function generatePerfectMaze(n) {
-        let maze = Array.from({ length: n }, () =>
-          Array(n).fill(1)
+      const area =
+        document.getElementById(
+          "game-area"
         );
 
-        function carve(r, c) {
-          maze[r][c] = 0;
-          const dirs = [
-            [1, 0], [-1, 0], [0, 1], [0, -1]
-          ].sort(() => Math.random() - 0.5);
 
-          for (let [dr, dc] of dirs) {
-            const nr = r + dr * 2;
-            const nc = c + dc * 2;
-            if (nr >= 0 && nr < n && nc >= 0 && nc < n && maze[nr][nc] === 1) {
-              maze[r + dr][c + dc] = 0;
-              carve(nr, nc);
-            }
-          }
+      clearTimeout(
+        reactionTimeout
+      );
+
+
+      /* -----------------------------------------------
+         REACTION
+      ------------------------------------------------ */
+
+      if (name === "reaction") {
+
+        area.innerHTML = `
+
+          <h2 class="game-title">
+            Reaction Tap
+          </h2>
+
+          <p class="game-description">
+            Wait for the box to turn green,
+            then tap it as quickly as possible.
+          </p>
+
+          <div
+            id="reaction-box"
+            class="reaction-box"
+          >
+            Ready?
+          </div>
+
+          <div class="center">
+
+            <button
+              class="btn"
+              onclick="startReaction()"
+            >
+              ⚡ Start
+            </button>
+
+          </div>
+
+          <p
+            id="reaction-result"
+            class="result center"
+          ></p>
+
+        `;
+
+      }
+
+
+      /* -----------------------------------------------
+         ODD ONE OUT
+      ------------------------------------------------ */
+
+      if (name === "odd") {
+
+        area.innerHTML = `
+
+          <h2 class="game-title">
+            Odd One Out
+          </h2>
+
+          <p class="game-description">
+            One tile is slightly different.
+            Can you find it?
+          </p>
+
+          <div
+            id="odd-grid"
+            class="grid"
+          ></div>
+
+          <p
+            id="odd-result"
+            class="result center"
+          ></p>
+
+          <div class="center">
+
+            <button
+              class="btn secondary"
+              onclick="setupOddGrid()"
+            >
+              ↻ New Round
+            </button>
+
+          </div>
+
+        `;
+
+        setupOddGrid();
+
+      }
+
+
+      /* -----------------------------------------------
+         MAZE
+      ------------------------------------------------ */
+
+      if (name === "maze") {
+
+        area.innerHTML = `
+
+          <h2 class="game-title">
+            Gentle Maze Escape
+          </h2>
+
+          <p class="game-description">
+            Guide the blue square from the start
+            to the goal.
+          </p>
+
+          <div id="maze"></div>
+
+          <div class="maze-controls center">
+
+            <button
+              class="btn"
+              onclick="mazeMove('up')"
+            >
+              ⬆
+            </button>
+
+            <br>
+
+            <button
+              class="btn"
+              onclick="mazeMove('left')"
+            >
+              ⬅
+            </button>
+
+            <button
+              class="btn"
+              onclick="mazeMove('down')"
+            >
+              ⬇
+            </button>
+
+            <button
+              class="btn"
+              onclick="mazeMove('right')"
+            >
+              ➡
+            </button>
+
+          </div>
+
+          <p
+            id="maze-result"
+            class="result center"
+          ></p>
+
+        `;
+
+        startMaze();
+
+      }
+
+
+      /* -----------------------------------------------
+         PATTERN
+      ------------------------------------------------ */
+
+      if (name === "pattern") {
+
+        area.innerHTML = `
+
+          <h2 class="game-title">
+            Daily Pattern Puzzle
+          </h2>
+
+          <p class="game-description">
+            Study the sequence and enter
+            the missing number.
+          </p>
+
+          <div
+            id="pattern-row"
+            class="pattern-row"
+          ></div>
+
+          <div class="input-group">
+
+            <input
+              type="text"
+              id="pattern-input"
+              placeholder="Your answer"
+              onkeydown="
+                if(event.key === 'Enter')
+                checkPattern()
+              "
+            >
+
+            <button
+              class="btn"
+              onclick="checkPattern()"
+            >
+              Submit
+            </button>
+
+          </div>
+
+          <p
+            id="pattern-result"
+            class="result center"
+          ></p>
+
+          <div class="center">
+
+            <button
+              class="btn secondary"
+              onclick="newPattern()"
+            >
+              ↻ New Pattern
+            </button>
+
+          </div>
+
+        `;
+
+        newPattern();
+
+      }
+
+    }
+
+
+
+    /* =====================================================
+       REACTION GAME
+    ===================================================== */
+
+    function startReaction() {
+
+      const box =
+        document.getElementById(
+          "reaction-box"
+        );
+
+
+      const result =
+        document.getElementById(
+          "reaction-result"
+        );
+
+
+      result.textContent = "";
+
+      result.className =
+        "result center";
+
+
+      box.style.background =
+        "#eaf2ff";
+
+      box.style.color =
+        "#17233d";
+
+      box.textContent =
+        "Wait...";
+
+      box.onclick = null;
+
+
+      const delay =
+        1000 +
+        Math.random() * 3000;
+
+
+      reactionTimeout =
+        setTimeout(() => {
+
+          box.style.background =
+            "#35b875";
+
+          box.style.color =
+            "white";
+
+          box.textContent =
+            "TAP!";
+
+
+          reactionStartTime =
+            performance.now();
+
+
+          box.onclick =
+            () => {
+
+              const time =
+                performance.now() -
+                reactionStartTime;
+
+
+              result.textContent =
+                `Your reaction time: ${
+                  Math.round(time)
+                } ms`;
+
+
+              result.className =
+                "result success center";
+
+
+              document
+                .getElementById(
+                  "success-sound"
+                )
+                .play()
+                .catch(() => {});
+
+
+              recordGame(true);
+
+
+              if (
+                bestReaction === null ||
+                time < bestReaction
+              ) {
+
+                bestReaction =
+                  time;
+
+                updateStats();
+
+              }
+
+
+              box.onclick = null;
+
+
+              box.style.background =
+                "#e7f8ef";
+
+              box.style.color =
+                "#35b875";
+
+              box.textContent =
+                "Done ✓";
+
+            };
+
+        }, delay);
+
+    }
+
+
+
+    /* =====================================================
+       ODD ONE OUT
+    ===================================================== */
+
+    function setupOddGrid() {
+
+      const grid =
+        document.getElementById(
+          "odd-grid"
+        );
+
+
+      const result =
+        document.getElementById(
+          "odd-result"
+        );
+
+
+      result.textContent = "";
+
+      result.className =
+        "result center";
+
+
+      grid.innerHTML = "";
+
+
+      const oddIndex =
+        Math.floor(
+          Math.random() * 8
+        );
+
+
+      for (
+        let i = 0;
+        i < 8;
+        i++
+      ) {
+
+        const tile =
+          document.createElement(
+            "div"
+          );
+
+
+        tile.className =
+          "grid-item";
+
+
+        if (i === oddIndex) {
+
+          tile.style.background =
+            "#a9efc8";
+
+        } else {
+
+          tile.style.background =
+            "#dce9ff";
+
         }
+
+
+        tile.onclick =
+          () => {
+
+            if (i === oddIndex) {
+
+              result.textContent =
+                "Nice! You found the odd one! 🎉";
+
+
+              result.className =
+                "result success center";
+
+
+              document
+                .getElementById(
+                  "success-sound"
+                )
+                .play()
+                .catch(() => {});
+
+
+              recordGame(true);
+
+
+              tile.style.transform =
+                "scale(1.12)";
+
+            } else {
+
+              result.textContent =
+                "Not quite. Try again.";
+
+
+              result.className =
+                "result error center";
+
+
+              document
+                .getElementById(
+                  "fail-sound"
+                )
+                .play()
+                .catch(() => {});
+
+            }
+
+          };
+
+
+        grid.appendChild(tile);
+
+      }
+
+    }
+
+
+
+    /* =====================================================
+       MAZE
+    ===================================================== */
+
+    function startMaze() {
+
+      const size = 5;
+
+      let mazeLayout =
+        generatePerfectMaze(
+          size
+        );
+
+
+      let playerPos = {
+        row: 0,
+        col: 0
+      };
+
+
+
+      /* Generate maze */
+
+      function generatePerfectMaze(n) {
+
+        const maze =
+          Array.from(
+            { length: n },
+            () =>
+              Array(n).fill(1)
+          );
+
+
+        function carve(r, c) {
+
+          maze[r][c] = 0;
+
+
+          const directions = [
+
+            [1, 0],
+
+            [-1, 0],
+
+            [0, 1],
+
+            [0, -1]
+
+          ];
+
+
+          directions.sort(
+            () =>
+              Math.random() -
+              0.5
+          );
+
+
+          for (
+            const [dr, dc]
+            of directions
+          ) {
+
+            const nr =
+              r + dr * 2;
+
+            const nc =
+              c + dc * 2;
+
+
+            if (
+              nr >= 0 &&
+              nr < n &&
+              nc >= 0 &&
+              nc < n &&
+              maze[nr][nc] === 1
+            ) {
+
+              maze[
+                r + dr
+              ][
+                c + dc
+              ] = 0;
+
+
+              carve(
+                nr,
+                nc
+              );
+
+            }
+
+          }
+
+        }
+
 
         carve(0, 0);
+
+
         maze[0][0] = 2;
+
         maze[n - 1][n - 1] = 3;
+
+
         return maze;
+
       }
+
+
+
+      /* Draw maze */
 
       function drawMaze() {
-        const maze = document.getElementById('maze');
-        maze.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-        maze.style.gridTemplateRows = `repeat(${size}, 1fr)`;
-        maze.innerHTML = '';
 
-        for (let r = 0; r < size; r++) {
-          for (let c = 0; c < size; c++) {
-            const cell = document.createElement('div');
-            cell.style.borderRadius = "10px";
-            cell.style.transition = "0.2s";
+        const maze =
+          document.getElementById(
+            "maze"
+          );
 
-            if (mazeLayout[r][c] === 1) cell.style.background = "#7aa7ff";
-            else if (mazeLayout[r][c] === 3) cell.style.background = "#a8ffcf";
-            else cell.style.background = "#e8f1ff";
 
-            if (playerPos.row === r && playerPos.col === c) {
-              cell.style.background = "#4d9bff";
-              cell.style.boxShadow = "0 0 10px #4d9bff";
+        maze.style.gridTemplateColumns =
+          `repeat(${size}, 1fr)`;
+
+
+        maze.style.gridTemplateRows =
+          `repeat(${size}, 1fr)`;
+
+
+        maze.innerHTML = "";
+
+
+        for (
+          let r = 0;
+          r < size;
+          r++
+        ) {
+
+          for (
+            let c = 0;
+            c < size;
+            c++
+          ) {
+
+            const cell =
+              document.createElement(
+                "div"
+              );
+
+
+            cell.className =
+              "maze-cell";
+
+
+            if (
+              mazeLayout[r][c] === 1
+            ) {
+
+              cell.style.background =
+                "#9bb8e8";
+
             }
 
+            else if (
+              mazeLayout[r][c] === 3
+            ) {
+
+              cell.style.background =
+                "#a9efc8";
+
+            }
+
+            else {
+
+              cell.style.background =
+                "#f3f7fc";
+
+            }
+
+
+            if (
+              playerPos.row === r &&
+              playerPos.col === c
+            ) {
+
+              cell.style.background =
+                "#3478f6";
+
+              cell.style.boxShadow =
+                "0 0 12px rgba(52,120,246,0.6)";
+
+            }
+
+
             maze.appendChild(cell);
+
           }
+
         }
+
       }
+
+
+
+      /* Move player */
 
       function movePlayer(dr, dc) {
-        const nr = playerPos.row + dr;
-        const nc = playerPos.col + dc;
 
-        if (nr < 0 || nr >= size || nc < 0 || nc >= size) return;
-        if (mazeLayout[nr][nc] === 1) return;
+        const nr =
+          playerPos.row + dr;
 
-        playerPos = { row: nr, col: nc };
+        const nc =
+          playerPos.col + dc;
 
-        if (mazeLayout[nr][nc] === 3) {
-          document.getElementById('maze-result').textContent =
-            "You escaped! New maze loading ✨";
-          
-          document.getElementById("success-sound").play();
 
-          setTimeout(() => {
-            mazeLayout = generatePerfectMaze(size);
-            playerPos = { row: 0, col: 0 };
-            document.getElementById('maze-result').textContent = "";
-            drawMaze();
-          }, 1200);
+        if (
+          nr < 0 ||
+          nr >= size ||
+          nc < 0 ||
+          nc >= size
+        ) {
+
+          return;
+
         }
 
+
+        if (
+          mazeLayout[nr][nc] === 1
+        ) {
+
+          return;
+
+        }
+
+
+        playerPos = {
+          row: nr,
+          col: nc
+        };
+
+
+        if (
+          mazeLayout[nr][nc] === 3
+        ) {
+
+          const result =
+            document.getElementById(
+              "maze-result"
+            );
+
+
+          result.textContent =
+            "You escaped! 🎉";
+
+
+          result.className =
+            "result success center";
+
+
+          document
+            .getElementById(
+              "success-sound"
+            )
+            .play()
+            .catch(() => {});
+
+
+          recordGame(true);
+
+
+          setTimeout(() => {
+
+            mazeLayout =
+              generatePerfectMaze(
+                size
+              );
+
+
+            playerPos = {
+              row: 0,
+              col: 0
+            };
+
+
+            result.textContent = "";
+
+
+            drawMaze();
+
+          }, 1200);
+
+        }
+
+
         drawMaze();
+
       }
 
-      document.onkeydown = (e) => {
-        if (e.key === "ArrowUp") movePlayer(-1, 0);
-        if (e.key === "ArrowDown") movePlayer(1, 0);
-        if (e.key === "ArrowLeft") movePlayer(0, -1);
-        if (e.key === "ArrowRight") movePlayer(0, 1);
-      };
 
-      window.mazeMove = function(dir) {
-        if (dir === "up") movePlayer(-1, 0);
-        if (dir === "down") movePlayer(1, 0);
-        if (dir === "left") movePlayer(0, -1);
-        if (dir === "right") movePlayer(0, 1);
-      };
+
+      /* Keyboard controls */
+
+      document.onkeydown =
+        (event) => {
+
+          if (
+            event.key ===
+            "ArrowUp"
+          ) {
+
+            event.preventDefault();
+
+            movePlayer(-1, 0);
+
+          }
+
+
+          if (
+            event.key ===
+            "ArrowDown"
+          ) {
+
+            event.preventDefault();
+
+            movePlayer(1, 0);
+
+          }
+
+
+          if (
+            event.key ===
+            "ArrowLeft"
+          ) {
+
+            event.preventDefault();
+
+            movePlayer(0, -1);
+
+          }
+
+
+          if (
+            event.key ===
+            "ArrowRight"
+          ) {
+
+            event.preventDefault();
+
+            movePlayer(0, 1);
+
+          }
+
+        };
+
+
+
+      /* Mobile controls */
+
+      window.mazeMove =
+        function(direction) {
+
+          if (
+            direction ===
+            "up"
+          ) {
+
+            movePlayer(-1, 0);
+
+          }
+
+
+          if (
+            direction ===
+            "down"
+          ) {
+
+            movePlayer(1, 0);
+
+          }
+
+
+          if (
+            direction ===
+            "left"
+          ) {
+
+            movePlayer(0, -1);
+
+          }
+
+
+          if (
+            direction ===
+            "right"
+          ) {
+
+            movePlayer(0, 1);
+
+          }
+
+        };
+
 
       drawMaze();
+
     }
 
-    /* Pattern Puzzle */
+
+
+    /* =====================================================
+       PATTERN PUZZLE
+    ===================================================== */
+
     function newPattern() {
-      const row = document.getElementById('pattern-row');
-      const result = document.getElementById('pattern-result');
-      const input = document.getElementById('pattern-input');
-      result.textContent = '';
-      input.value = '';
 
-      const start = Math.floor(Math.random() * 5) + 1;
-      const step = Math.floor(Math.random() * 5) + 1;
-      dailyPattern = { start, step };
+      const row =
+        document.getElementById(
+          "pattern-row"
+        );
 
-      row.innerHTML = '';
-      for (let i = 0; i < 4; i++) {
-        const cell = document.createElement('div');
-        cell.className = 'pattern-cell';
-        cell.textContent = i === 3 ? '?' : start + step * i;
+
+      const result =
+        document.getElementById(
+          "pattern-result"
+        );
+
+
+      const input =
+        document.getElementById(
+          "pattern-input"
+        );
+
+
+      result.textContent = "";
+
+      result.className =
+        "result center";
+
+
+      input.value = "";
+
+
+      const start =
+        Math.floor(
+          Math.random() * 5
+        ) + 1;
+
+
+      const step =
+        Math.floor(
+          Math.random() * 5
+        ) + 1;
+
+
+      dailyPattern = {
+        start,
+        step
+      };
+
+
+      row.innerHTML = "";
+
+
+      for (
+        let i = 0;
+        i < 4;
+        i++
+      ) {
+
+        const cell =
+          document.createElement(
+            "div"
+          );
+
+
+        cell.className =
+          "pattern-cell";
+
+
+        cell.textContent =
+          i === 3
+            ? "?"
+            : start +
+              step * i;
+
+
         row.appendChild(cell);
+
       }
+
     }
 
-  function checkPattern() {
-  const input = document.getElementById('pattern-input');
-  const result = document.getElementById('pattern-result');
-  const guess = parseInt(input.value, 10);
 
-  if (isNaN(guess)) {
-    result.textContent = 'Please enter a number.';
-    return;
-  }
 
-  const correct = dailyPattern.start + dailyPattern.step * 3;
+    /* =====================================================
+       CHECK PATTERN
+    ===================================================== */
 
-  if (guess === correct) {
-    result.textContent = 'Correct! Nice pattern spotting 🌟';
+    function checkPattern() {
 
-    // ⭐ PLAY SOUND HERE
-    document.getElementById("success-sound").play();
+      const input =
+        document.getElementById(
+          "pattern-input"
+        );
 
-  } else {
-    document.getElementById("fail-sound").play();
-    result.textContent = `Not quite. The correct answer was ${correct}.`;
-  }
-}
+
+      const result =
+        document.getElementById(
+          "pattern-result"
+        );
+
+
+      const guess =
+        parseInt(
+          input.value,
+          10
+        );
+
+
+      if (
+        Number.isNaN(guess)
+      ) {
+
+        result.textContent =
+          "Please enter a number.";
+
+        result.className =
+          "result error center";
+
+        return;
+
+      }
+
+
+      const correct =
+        dailyPattern.start +
+        dailyPattern.step * 3;
+
+
+      if (
+        guess === correct
+      ) {
+
+        result.textContent =
+          "Correct! Great pattern spotting! 🌟";
+
+
+        result.className =
+          "result success center";
+
+
+        document
+          .getElementById(
+            "success-sound"
+          )
+          .play()
+          .catch(() => {});
+
+
+        recordGame(true);
+
+      } else {
+
+        result.textContent =
+          `Not quite. The correct answer was ${correct}.`;
+
+
+        result.className =
+          "result error center";
+
+
+        document
+          .getElementById(
+            "fail-sound"
+          )
+          .play()
+          .catch(() => {});
+
+      }
+
+    }
+
+
+
+    /* =====================================================
+       INITIALIZE
+    ===================================================== */
+
+    updateStats();
+
   </script>
+
 </body>
 </html>
